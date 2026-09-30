@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "date": "2026-09-30",
+  "language": "en",
+  "syntheticLabel": "Synthetic example",
+  "provenance": {
+    "creator": "ParalleX Labs (synthetic example)",
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "attribution": {
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "CDAC Network, The Alan Turing Institute and Humanitarian AI Advisory",
+    "independenceStatement": "This tool is independent and is not affiliated with or endorsed by SAFE AI or its stewards.",
+    "adaptationNotice": "Screening questions, data rules, safeguard lists, decision logic and card format are ParalleX's own and are not SAFE AI's assessment method."
+  },
+  "step1": {
+    "name": "Internal meeting summary drafts",
+    "purpose": "Draft summaries of internal coordination meetings for programme staff review before circulation.",
+    "team": "Programme support unit",
+    "accountableRole": "Deputy programme manager",
+    "toolType": "summarisation",
+    "deployment": "org-approved",
+    "inputLanguages": "English, French",
+    "outputLanguages": "English"
+  },
+  "impact": { "I1": false, "I2": false, "I3": false, "I4": true },
+  "data": { "D1": false, "D2": false, "D3": false, "D4": true },
+  "safeguards": {
+    "S_ACCOUNTABLE_ROLE": true,
+    "S_OUTPUT_REVIEW": true,
+    "S_USER_TRAINING": true,
+    "S_DATA_MINIMISATION": true,
+    "S_RECORD_OF_USE": true
+  },
+  "community": {
+    "informWhat": "",
+    "informChannels": "",
+    "informLanguages": "",
+    "informFormats": "",
+    "informWhen": "",
+    "complainChannel": "",
+    "complainResponseTime": "",
+    "complainHandover": "",
+    "consultWho": "",
+    "consultWhen": "",
+    "consultMethod": "",
+    "consultInfluence": "",
+    "feedbackHow": "",
+    "inclusion": ""
+  },
+  "localized": {
+    "fr": {
+      "syntheticLabel": "Exemple fictif",
+      "step1": {
+        "name": "Ébauches de résumés de réunions internes",
+        "purpose": "Produire des ébauches de résumés de réunions de coordination internes pour examen par le personnel de programme avant diffusion.",
+        "team": "Unité de soutien aux programmes",
+        "accountableRole": "Adjoint·e au gestionnaire de programme",
+        "inputLanguages": "Anglais, français",
+        "outputLanguages": "Anglais"
+      },
+      "changeLog": [
+        { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+      ]
+    }
+  },
+  "nextReviewDate": "2027-03-30",
+  "changeLog": [
+    { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+  ]
+}

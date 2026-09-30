@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Transparency Card draft",
+  "type": "object",
+  "required": ["schemaVersion", "step1"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "cardVersion": { "type": "integer", "minimum": 1 },
+    "date": {
+      "anyOf": [
+        { "type": "string", "const": "" },
+        { "type": "string", "format": "date" }
+      ]
+    },
+    "language": { "enum": ["en", "fr"] },
+    "step1": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "purpose": { "type": "string" },
+        "team": { "type": "string" },
+        "accountableRole": { "type": "string" },
+        "toolType": { "type": "string" },
+        "deployment": { "type": "string" },
+        "inputLanguages": { "type": "string" },
+        "outputLanguages": { "type": "string" }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "properties": {
+        "I1": { "type": ["boolean", "null"] },
+        "I2": { "type": ["boolean", "null"] },
+        "I3": { "type": ["boolean", "null"] },
+        "I4": { "type": ["boolean", "null"] }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "D1": { "type": "boolean" },
+        "D2": { "type": "boolean" },
+        "D3": { "type": "boolean" },
+        "D4": { "type": "boolean" }
+      }
+    },
+    "safeguards": { "type": "object" },
+    "community": { "type": "object" },
+    "nextReviewDate": {
+      "anyOf": [
+        { "type": "string", "const": "" },
+        { "type": "string", "format": "date" }
+      ]
+    },
+    "changeLog": { "type": "array" }
+  }
+}

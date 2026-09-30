@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bilingual client-side tool to build an AI transparency card for humanitarian governance">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="i18n-title" content="meta.title">
+  <title>AI Transparency Card</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/parallex-favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/brand/parallex-apple-touch-180.png">
+  <script src="js/frame-guard.js"></script>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to main content</a>
+  <header class="site-header no-print">
+    <div class="header-inner">
+      <a class="brand-link" href="index.html">
+        <img class="brand-mark-light" src="assets/brand/parallex-mark.png" width="120" height="32" alt="ParalleX Labs">
+        <img class="brand-mark-dark" src="assets/brand/parallex-mark-dark.png" width="120" height="32" alt="ParalleX Labs">
+        <span data-i18n="home.title">AI Transparency Card</span>
+      </a>
+      <nav aria-label="Main" data-i18n-aria="nav.main">
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Card builder</a></li>
+          <li><a href="method.html" data-i18n="nav.method">Method</a></li>
+        </ul>
+      </nav>
+      <button type="button" id="lang-switch" class="lang-switch" data-i18n="lang.switch">Français</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="live-region" class="sr-only" aria-live="polite"></div>
+
+    <section id="view-home" class="view">
+      <div class="hero">
+        <h1 id="view-home-title" data-i18n="home.title">AI Transparency Card</h1>
+        <p class="hero-tagline" data-i18n="home.heroTagline">Describe a proposed AI use, screen its governance level, and produce a one-page transparency card, all in your browser.</p>
+        <p class="privacy-note" data-i18n="footer.privacy">Nothing you enter leaves this browser.</p>
+        <ol class="hero-steps" aria-label="Steps">
+          <li data-i18n="step.1">Describe the use</li>
+          <li data-i18n="step.2">Impact screening</li>
+          <li data-i18n="step.3">Data screening</li>
+          <li data-i18n="step.4">Safeguards</li>
+          <li data-i18n="step.5">Community in the Loop</li>
+          <li data-i18n="step.6">Transparency card</li>
+        </ol>
+        <div class="btn-row">
+          <button type="button" class="primary" id="btn-start" data-i18n="home.startCard">Start a card</button>
+          <button type="button" id="btn-resume" hidden data-i18n="home.resume">Resume saved draft</button>
+          <details class="sample-menu">
+            <summary data-i18n="home.loadSample">Load a sample</summary>
+            <div class="sample-menu-items">
+              <button type="button" id="btn-sample-1" data-i18n="home.sample1">Tier 1: internal summaries (green)</button>
+              <button type="button" id="btn-sample-2" data-i18n="home.sample2">Tier 2: community feedback (amber)</button>
+              <button type="button" id="btn-sample-3" data-i18n="home.sample3">Tier 3: SMS chatbot (red)</button>
+            </div>
+          </details>
+          <button type="button" id="btn-import-home" data-i18n="home.import">Import JSON card</button>
+          <input type="file" id="import-file-home" accept="application/json,.json" class="sr-only" tabindex="-1" aria-labelledby="btn-import-home">
+        </div>
+        <p class="note" id="draft-notice" data-i18n="home.draftNotice">Drafts are saved in this browser only.</p>
+        <div id="invalid-draft-notices" class="invalid-draft-notices" hidden aria-live="polite"></div>
+        <div id="import-error-summary-home" class="import-error-summary" hidden role="alert" tabindex="-1">
+          <h2 data-i18n="import.errorTitle">Import failed</h2>
+          <ul id="import-error-summary-home-list"></ul>
+        </div>
+        <button type="button" id="btn-clear-draft" data-i18n="home.clearDraft">Clear saved draft</button>
+      </div>
+    </section>
+
+    <section id="view-wizard" class="view" hidden>
+      <nav class="progress-nav" aria-labelledby="step-progress-status">
+        <p id="step-progress-status" class="step-progress-status"></p>
+        <ol class="steps-nav" id="steps-nav"></ol>
+      </nav>
+      <div id="error-summary" class="error-summary" hidden role="alert" tabindex="-1">
+        <h2 data-i18n="error.summaryTitle">There is a problem</h2>
+        <ul id="error-list"></ul>
+      </div>
+      <div id="import-error-summary-wizard" class="import-error-summary" hidden role="alert" tabindex="-1">
+        <h2 data-i18n="import.errorTitle">Import failed</h2>
+        <ul id="import-error-summary-wizard-list"></ul>
+      </div>
+
+      <div class="wizard-layout">
+        <div id="step-panels" class="wizard-form">
+          <section id="step-1" class="step-panel" data-step="1" hidden>
+            <h1 id="step-1-title" tabindex="-1" data-i18n="step.1">Describe the use</h1>
+            <label><span data-i18n="field.name">Use name</span> <input type="text" id="f-name" required autocomplete="off"></label>
+            <label><span data-i18n="field.purpose">Purpose</span> <textarea id="f-purpose" required></textarea></label>
+            <label><span data-i18n="field.team">Team or unit</span> <input type="text" id="f-team" autocomplete="off"></label>
+            <label><span data-i18n="field.accountableRole">Accountable role</span> <input type="text" id="f-accountable" required autocomplete="off"></label>
+            <label><span data-i18n="field.toolType">Tool type</span>
+              <select id="f-tool-type" required>
+                <option value="" data-i18n="placeholder.select">Select…</option>
+                <option value="general-chat" data-i18n="tool.general-chat">General chat assistant</option>
+                <option value="translation" data-i18n="tool.translation">Translation</option>
+                <option value="transcription" data-i18n="tool.transcription">Transcription</option>
+                <option value="summarisation" data-i18n="tool.summarisation">Summarisation</option>
+                <option value="classification-triage" data-i18n="tool.classification-triage">Classification or triage</option>
+                <option value="image-analysis" data-i18n="tool.image-analysis">Image analysis</option>
+                <option value="public-chatbot" data-i18n="tool.public-chatbot">Public-facing chatbot</option>
+                <option value="other" data-i18n="tool.other">Other</option>
+              </select>
+            </label>
+            <label><span data-i18n="field.deployment">Deployment</span>
+              <select id="f-deployment" required>
+                <option value="" data-i18n="placeholder.select">Select…</option>
+                <option value="org-approved" data-i18n="deploy.org-approved">Organisation-approved</option>
+                <option value="public-consumer" data-i18n="deploy.public-consumer">Public consumer tool</option>
+                <option value="local-hosted" data-i18n="deploy.local-hosted">Locally hosted</option>
+              </select>
+            </label>
+            <label><span data-i18n="field.inputLanguages">Input languages</span> <input type="text" id="f-input-lang" required></label>
+            <label><span data-i18n="field.outputLanguages">Output languages</span> <input type="text" id="f-output-lang" required></label>
+          </section>
+
+          <section id="step-2" class="step-panel" data-step="2" hidden>
+            <h1 id="step-2-title" tabindex="-1" data-i18n="step.2">Impact screening</h1>
+            <p data-i18n="impact.intro">Required tier is the highest that applies.</p>
+            <fieldset id="impact-fieldset">
+              <legend data-i18n="step.2">Impact screening</legend>
+              <div class="impact-questions">
+                <fieldset class="impact-question">
+                  <legend data-i18n="impact.I1">I1</legend>
+                  <label class="inline"><input type="radio" name="impact-I1" value="yes"> <span data-i18n="impact.yes">Yes</span></label>
+                  <label class="inline"><input type="radio" name="impact-I1" value="no"> <span data-i18n="impact.no">No</span></label>
+                </fieldset>
+                <fieldset class="impact-question">
+                  <legend data-i18n="impact.I2">I2</legend>
+                  <label class="inline"><input type="radio" name="impact-I2" value="yes"> <span data-i18n="impact.yes">Yes</span></label>
+                  <label class="inline"><input type="radio" name="impact-I2" value="no"> <span data-i18n="impact.no">No</span></label>
+                </fieldset>
+                <fieldset class="impact-question">
+                  <legend data-i18n="impact.I3">I3</legend>
+                  <label class="inline"><input type="radio" name="impact-I3" value="yes"> <span data-i18n="impact.yes">Yes</span></label>
+                  <label class="inline"><input type="radio" name="impact-I3" value="no"> <span data-i18n="impact.no">No</span></label>
+                </fieldset>
+                <fieldset class="impact-question">
+                  <legend data-i18n="impact.I4">I4</legend>
+                  <label class="inline"><input type="radio" name="impact-I4" value="yes"> <span data-i18n="impact.yes">Yes</span></label>
+                  <label class="inline"><input type="radio" name="impact-I4" value="no"> <span data-i18n="impact.no">No</span></label>
+                </fieldset>
+              </div>
+            </fieldset>
+            <div id="tier-result"></div>
+          </section>
+
+          <section id="step-3" class="step-panel" data-step="3" hidden>
+            <h1 id="step-3-title" tabindex="-1" data-i18n="step.3">Data screening</h1>
+            <p data-i18n="data.intro">Which data types apply?</p>
+            <fieldset>
+              <legend data-i18n="step.3">Data screening</legend>
+              <label class="inline"><input type="checkbox" id="data-D1" data-data="D1"> <span data-i18n="data.D1">D1</span></label>
+              <label class="inline"><input type="checkbox" id="data-D2" data-data="D2"> <span data-i18n="data.D2">D2</span></label>
+              <label class="inline"><input type="checkbox" id="data-D3" data-data="D3"> <span data-i18n="data.D3">D3</span></label>
+              <label class="inline"><input type="checkbox" id="data-D4" data-data="D4"> <span data-i18n="data.D4">D4</span></label>
+            </fieldset>
+          </section>
+
+          <section id="step-4" class="step-panel" data-step="4" hidden>
+            <h1 id="step-4-title" tabindex="-1" data-i18n="step.4">Safeguards</h1>
+            <p data-i18n="safeguards.intro">Check safeguards in place.</p>
+            <fieldset id="safeguards-fieldset"></fieldset>
+            <div id="decision-preview"></div>
+          </section>
+
+          <section id="step-5" class="step-panel" data-step="5" hidden>
+            <h1 id="step-5-title" tabindex="-1" data-i18n="step.5">Community in the Loop</h1>
+            <p id="community-req-note"></p>
+            <p data-i18n="community.intro">Plan engagement.</p>
+            <label><span data-i18n="community.informWhat">What</span> <textarea id="c-inform-what"></textarea></label>
+            <label><span data-i18n="community.informChannels">Channels</span> <input type="text" id="c-inform-channels"></label>
+            <label><span data-i18n="community.informLanguages">Languages</span> <input type="text" id="c-inform-languages"></label>
+            <label><span data-i18n="community.informFormats">Formats</span> <input type="text" id="c-inform-formats"></label>
+            <label><span data-i18n="community.informWhen">When</span> <input type="text" id="c-inform-when"></label>
+            <label><span data-i18n="community.complainChannel">Complaints</span> <input type="text" id="c-complain-channel"></label>
+            <label><span data-i18n="community.complainResponseTime">Response time</span> <input type="text" id="c-complain-time"></label>
+            <label><span data-i18n="community.complainHandover">Handover</span> <input type="text" id="c-complain-handover"></label>
+            <label><span data-i18n="community.consultWho">Who consulted</span> <input type="text" id="c-consult-who"></label>
+            <label><span data-i18n="community.consultWhen">When</span> <input type="text" id="c-consult-when"></label>
+            <label><span data-i18n="community.consultMethod">Method</span> <input type="text" id="c-consult-method"></label>
+            <label><span data-i18n="community.consultInfluence">Influence</span> <textarea id="c-consult-influence"></textarea></label>
+            <label><span data-i18n="community.feedbackHow">Feedback</span> <input type="text" id="c-feedback-how"></label>
+            <label><span data-i18n="community.inclusion">Inclusion</span> <textarea id="c-inclusion"></textarea></label>
+          </section>
+
+          <section id="step-6" class="step-panel" data-step="6" hidden>
+            <h1 id="step-6-title" tabindex="-1" data-i18n="step.6">Transparency card</h1>
+            <div class="step-6-controls no-print">
+              <label><span data-i18n="field.nextReview">Next review date</span> <input type="date" id="f-next-review"></label>
+            </div>
+            <div id="synthetic-banner" class="synthetic-banner" hidden data-i18n="card.synthetic">Synthetic example</div>
+            <div class="card-layout">
+              <article id="print-card" class="print-card" aria-labelledby="card-heading">
+                <h2 id="card-heading" data-i18n="card.title">Transparency card</h2>
+                <div id="card-content"></div>
+              </article>
+              <aside id="card-preview" class="card-preview no-print" aria-label="Live preview">
+                <h2 class="sr-only" data-i18n="card.preview">Card preview</h2>
+                <div id="card-preview-content" class="print-card"></div>
+              </aside>
+            </div>
+            <div class="btn-row no-print">
+              <button type="button" id="btn-print-letter" data-i18n="btn.print">Print / Save PDF</button>
+              <button type="button" id="btn-print-a4" data-i18n="btn.printA4">A4</button>
+              <button type="button" id="btn-export-md" data-i18n="btn.exportMd">Export Markdown</button>
+              <button type="button" id="btn-export-json" data-i18n="btn.exportJson">Export JSON</button>
+              <button type="button" id="btn-import" data-i18n="btn.import">Import JSON</button>
+              <input type="file" id="import-file" accept="application/json,.json" class="sr-only" tabindex="-1" aria-labelledby="btn-import">
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="btn-row no-print wizard-actions">
+        <button type="button" id="btn-back" data-i18n="btn.back">Back</button>
+        <button type="button" id="btn-next" class="primary" data-i18n="btn.next">Continue</button>
+        <button type="button" id="btn-save" data-i18n="btn.save">Save draft</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <p data-i18n="footer.independence">Independence statement…</p>
+    <p data-i18n="footer.privacy">Nothing leaves this browser.</p>
+    <p><a href="method.html#references" data-i18n="nav.references">References</a></p>
+  </footer>
+
+  <script type="module" src="js/ui/app.js"></script>
+</body>
+</html>

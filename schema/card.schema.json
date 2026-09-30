@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parallexlabs.github.io/ai-transparency-card/schema/card.schema.json",
+  "title": "AI Transparency Card",
+  "type": "object",
+  "required": ["schemaVersion", "cardVersion", "date", "language", "step1", "impact", "data", "safeguards", "community", "changeLog", "attribution"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "cardVersion": { "type": "integer", "minimum": 1 },
+    "date": { "type": "string", "format": "date" },
+    "language": { "enum": ["en", "fr"] },
+    "step1": {
+      "type": "object",
+      "required": ["name", "purpose", "toolType", "deployment", "inputLanguages", "outputLanguages"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "team": { "type": "string" },
+        "accountableRole": { "type": "string" },
+        "toolType": {
+          "enum": [
+            "general-chat",
+            "translation",
+            "transcription",
+            "summarisation",
+            "classification-triage",
+            "image-analysis",
+            "public-chatbot",
+            "other"
+          ]
+        },
+        "deployment": {
+          "enum": ["org-approved", "public-consumer", "local-hosted"]
+        },
+        "inputLanguages": { "type": "string", "minLength": 1 },
+        "outputLanguages": { "type": "string", "minLength": 1 }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "required": ["I1", "I2", "I3", "I4"],
+      "additionalProperties": false,
+      "properties": {
+        "I1": { "type": "boolean" },
+        "I2": { "type": "boolean" },
+        "I3": { "type": "boolean" },
+        "I4": { "type": "boolean" }
+      }
+    },
+    "data": {
+      "type": "object",
+      "required": ["D1", "D2", "D3", "D4"],
+      "additionalProperties": false,
+      "properties": {
+        "D1": { "type": "boolean" },
+        "D2": { "type": "boolean" },
+        "D3": { "type": "boolean" },
+        "D4": { "type": "boolean" }
+      }
+    },
+    "safeguards": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "community": {
+      "type": "object",
+      "required": [
+        "informWhat", "informChannels", "informLanguages", "informFormats", "informWhen",
+        "complainChannel", "complainResponseTime", "complainHandover",
+        "consultWho", "consultWhen", "consultMethod", "consultInfluence",
+        "feedbackHow", "inclusion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "informWhat": { "type": "string" },
+        "informChannels": { "type": "string" },
+        "informLanguages": { "type": "string" },
+        "informFormats": { "type": "string" },
+        "informWhen": { "type": "string" },
+        "complainChannel": { "type": "string" },
+        "complainResponseTime": { "type": "string" },
+        "complainHandover": { "type": "string" },
+        "consultWho": { "type": "string" },
+        "consultWhen": { "type": "string" },
+        "consultMethod": { "type": "string" },
+        "consultInfluence": { "type": "string" },
+        "feedbackHow": { "type": "string" },
+        "inclusion": { "type": "string" }
+      }
+    },
+    "nextReviewDate": {
+      "anyOf": [
+        { "type": "string", "const": "" },
+        { "type": "string", "format": "date" }
+      ]
+    },
+    "changeLog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["date", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "version": { "type": "integer", "minimum": 1 },
+          "changes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "summary": { "type": "string", "minLength": 1 }
+        },
+        "anyOf": [
+          { "required": ["changes"] },
+          { "required": ["summary"] }
+        ]
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tier": { "type": ["integer", "null"], "minimum": 1, "maximum": 3 },
+        "decision": { "enum": ["red", "amber", "green", null] },
+        "redFlags": { "type": "array", "items": { "type": "string" } },
+        "missingSafeguards": { "type": "array", "items": { "type": "string" } },
+        "firedRules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "syntheticLabel": { "type": "string" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "creator": { "type": "string" },
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "licenceUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "required": ["sourceUrl", "licenceUrl", "creator", "independenceStatement", "adaptationNotice"],
+      "additionalProperties": false,
+      "properties": {
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "licenceUrl": { "type": "string", "format": "uri" },
+        "creator": { "type": "string", "minLength": 1 },
+        "independenceStatement": { "type": "string", "minLength": 1 },
+        "adaptationNotice": { "type": "string", "minLength": 1 }
+      }
+    },
+    "localized": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="i18n-title" content="meta.methodTitle">
+  <title>Method | AI Transparency Card</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/parallex-favicon-32.png">
+  <script src="js/frame-guard.js"></script>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-link" href="index.html">
+        <img class="brand-mark-light" src="assets/brand/parallex-mark.png" width="120" height="32" alt="ParalleX Labs">
+        <img class="brand-mark-dark" src="assets/brand/parallex-mark-dark.png" width="120" height="32" alt="ParalleX Labs">
+        <span data-i18n="home.title">AI Transparency Card</span>
+      </a>
+      <nav aria-label="Main" data-i18n-aria="nav.main">
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Card builder</a></li>
+          <li><a href="method.html" data-i18n="nav.method">Method</a></li>
+        </ul>
+      </nav>
+      <button type="button" id="lang-switch" class="lang-switch" data-i18n="lang.switch">Français</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <h1 data-i18n="method.title">Method</h1>
+    <p data-i18n="method.intro">This page documents every rule.</p>
+    <p data-i18n="method.independence">Independence statement…</p>
+    <div id="method-rules"></div>
+    <section id="references" class="references-section">
+      <h2 data-i18n="references.title">References</h2>
+      <div id="method-references"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.independence">Independence statement…</p>
+    <p data-i18n="footer.privacy">Nothing leaves this browser.</p>
+    <p><a href="#references" data-i18n="nav.references">References</a></p>
+  </footer>
+
+  <script type="module" src="js/ui/method.js"></script>
+</body>
+</html>

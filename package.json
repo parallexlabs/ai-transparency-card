@@ -1,0 +1,30 @@
+{
+  "name": "ai-transparency-card",
+  "version": "1.0.0",
+  "description": "Bilingual client-side AI transparency card builder for humanitarian governance",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "gen:validator": "node scripts/generate_validator.mjs",
+    "check:validator": "node scripts/check_validator.mjs",
+    "verify:headers": "node scripts/verify_production_headers.mjs",
+    "test": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-coverage-include=web/js/core/** --test-coverage-exclude=web/js/core/card-validator.js --test-coverage-lines=90 test/*.test.js",
+    "lint": "eslint .",
+    "check:site": "node scripts/check_site.mjs",
+    "test:browser": "node --test --test-reporter=spec --test-reporter-destination=stdout test/browser.test.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@eslint/js": "9.36.0",
+    "ajv": "8.18.0",
+    "ajv-formats": "3.0.1",
+    "eslint": "9.36.0",
+    "globals": "16.4.0",
+    "markdown-it": "14.3.2",
+    "markdown-it-multimd-table": "4.2.3",
+    "playwright": "1.55.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

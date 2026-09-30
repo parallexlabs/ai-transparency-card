@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "date": "2026-09-30",
+  "language": "en",
+  "syntheticLabel": "Synthetic example",
+  "provenance": {
+    "creator": "ParalleX Labs (synthetic example)",
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "attribution": {
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "CDAC Network, The Alan Turing Institute and Humanitarian AI Advisory",
+    "independenceStatement": "This tool is independent and is not affiliated with or endorsed by SAFE AI or its stewards.",
+    "adaptationNotice": "Screening questions, data rules, safeguard lists, decision logic and card format are ParalleX's own and are not SAFE AI's assessment method."
+  },
+  "step1": {
+    "name": "SMS chatbot for distribution times",
+    "purpose": "Answer beneficiary questions about food distribution schedules via SMS.",
+    "team": "Field operations",
+    "accountableRole": "Operations coordinator",
+    "toolType": "public-chatbot",
+    "deployment": "org-approved",
+    "inputLanguages": "Arabic",
+    "outputLanguages": "Arabic"
+  },
+  "impact": { "I1": true, "I2": false, "I3": false, "I4": false },
+  "data": { "D1": true, "D2": false, "D3": false, "D4": false },
+  "safeguards": {
+    "S_ACCOUNTABLE_ROLE": true,
+    "S_OUTPUT_REVIEW": true,
+    "S_USER_TRAINING": true,
+    "S_DATA_MINIMISATION": true,
+    "S_RECORD_OF_USE": true,
+    "S_RISK_ASSESSMENT": true,
+    "S_DPIA": true,
+    "S_LANGUAGE_TESTING": true,
+    "S_MONITORING_PLAN": true,
+    "S_MANUAL_FALLBACK": true,
+    "S_COMMUNITY_CODESIGN": true,
+    "S_ERROR_MONITORING": true,
+    "S_HUMAN_ALTERNATIVE": true,
+    "S_STOP_CRITERIA": true
+  },
+  "community": {
+    "informWhat": "",
+    "informChannels": "",
+    "informLanguages": "",
+    "informFormats": "",
+    "informWhen": "",
+    "complainChannel": "",
+    "complainResponseTime": "",
+    "complainHandover": "",
+    "consultWho": "Community representatives",
+    "consultWhen": "Before launch",
+    "consultMethod": "Town halls",
+    "consultInfluence": "Adjusted message wording",
+    "feedbackHow": "",
+    "inclusion": "SMS accessible; literacy support via helpline planned"
+  },
+  "localized": {
+    "fr": {
+      "syntheticLabel": "Exemple fictif",
+      "step1": {
+        "name": "Agent conversationnel par SMS pour les heures de distribution",
+        "purpose": "Répondre aux questions des personnes bénéficiaires sur les horaires de distribution alimentaire par SMS.",
+        "team": "Opérations sur le terrain",
+        "accountableRole": "Coordonnateur·rice des opérations",
+        "inputLanguages": "Arabe",
+        "outputLanguages": "Arabe"
+      },
+      "community": {
+        "consultWho": "Représentantes et représentants communautaires",
+        "consultWhen": "Avant le lancement",
+        "consultMethod": "Assemblées publiques",
+        "consultInfluence": "Ajustement des formulations des messages",
+        "inclusion": "SMS accessible; soutien en littératie par ligne d'assistance prévu"
+      },
+      "changeLog": [
+        { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+      ]
+    }
+  },
+  "nextReviewDate": "2026-12-01",
+  "changeLog": [
+    { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+  ]
+}

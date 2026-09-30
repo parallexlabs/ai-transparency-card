@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "date": "2026-09-30",
+  "language": "en",
+  "syntheticLabel": "Synthetic example",
+  "provenance": {
+    "creator": "ParalleX Labs (synthetic example)",
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "attribution": {
+    "sourceUrl": "https://www.cdacnetwork.org/safe-ai",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": "CDAC Network, The Alan Turing Institute and Humanitarian AI Advisory",
+    "independenceStatement": "This tool is independent and is not affiliated with or endorsed by SAFE AI or its stewards.",
+    "adaptationNotice": "Screening questions, data rules, safeguard lists, decision logic and card format are ParalleX's own and are not SAFE AI's assessment method."
+  },
+  "step1": {
+    "name": "Community feedback summary for programme review",
+    "purpose": "Summarise and translate community feedback collected through focus groups for quarterly programme review meetings.",
+    "team": "Accountability team",
+    "accountableRole": "Accountability lead",
+    "toolType": "translation",
+    "deployment": "org-approved",
+    "inputLanguages": "Arabic, French",
+    "outputLanguages": "English, French"
+  },
+  "impact": { "I1": false, "I2": false, "I3": true, "I4": false },
+  "data": { "D1": true, "D2": false, "D3": false, "D4": false },
+  "safeguards": {
+    "S_ACCOUNTABLE_ROLE": true,
+    "S_OUTPUT_REVIEW": true,
+    "S_USER_TRAINING": true,
+    "S_DATA_MINIMISATION": true,
+    "S_RECORD_OF_USE": true,
+    "S_RISK_ASSESSMENT": true,
+    "S_DPIA": true,
+    "S_MONITORING_PLAN": true,
+    "S_MANUAL_FALLBACK": true
+  },
+  "community": {
+    "informWhat": "Participants told that summaries are produced with organisational approval; no automated decisions.",
+    "informChannels": "Focus group introduction script",
+    "informLanguages": "Arabic, French",
+    "informFormats": "Verbal briefing",
+    "informWhen": "At start of each focus group",
+    "complainChannel": "Community feedback hotline",
+    "complainResponseTime": "5 working days",
+    "complainHandover": "Accountability officer",
+    "consultWho": "Focus group participants",
+    "consultWhen": "Quarterly",
+    "consultMethod": "Facilitated discussions",
+    "consultInfluence": "Themes feed programme adjustments",
+    "feedbackHow": "Shared in community bulletin",
+    "inclusion": "Female facilitators; materials in local languages"
+  },
+  "localized": {
+    "fr": {
+      "syntheticLabel": "Exemple fictif",
+      "step1": {
+        "name": "Résumé de la rétroaction communautaire pour l'examen de programme",
+        "purpose": "Résumer et traduire la rétroaction recueillie dans des groupes de discussion pour les réunions trimestrielles d'examen de programme.",
+        "team": "Équipe de redevabilité",
+        "accountableRole": "Responsable de la redevabilité",
+        "inputLanguages": "Arabe, français",
+        "outputLanguages": "Anglais, français"
+      },
+      "community": {
+        "informWhat": "Les participantes et participants sont informés que les résumés sont produits avec l'approbation de l'organisation; aucune décision automatisée.",
+        "informChannels": "Script d'introduction des groupes de discussion",
+        "informLanguages": "Arabe, français",
+        "informFormats": "Exposé verbal",
+        "informWhen": "Au début de chaque groupe de discussion",
+        "complainChannel": "Ligne de rétroaction communautaire",
+        "complainResponseTime": "5 jours ouvrables",
+        "complainHandover": "Agent·e de redevabilité",
+        "consultWho": "Participantes et participants aux groupes de discussion",
+        "consultWhen": "Trimestriellement",
+        "consultMethod": "Discussions animées",
+        "consultInfluence": "Les thèmes orientent les ajustements de programme",
+        "feedbackHow": "Diffusé dans le bulletin communautaire",
+        "inclusion": "Animatrices; documents dans les langues locales"
+      },
+      "changeLog": [
+        { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+      ]
+    }
+  },
+  "nextReviewDate": "2027-01-15",
+  "changeLog": [
+    { "date": "2026-09-30", "version": 1, "changes": ["initial"] }
+  ]
+}
